@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WithFamily Video Streaming</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: linear-gradient(135deg, #222 0%, #FF6B6B 100%);
+			color: #fff;
+			margin: 0;
+			min-height: 100vh;
+		}
+		.navbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: linear-gradient(90deg, #222 0%, #FF6B6B 60%, #FFD600 100%);
+			padding: 12px 32px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.navbar-left {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+		.logo {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			box-shadow: 0 0 8px #FFD60099;
+			background: #FFD600;
+		}
+		.app-name {
+			font-size: 1.7rem;
+			font-weight: bold;
+			color: #FFD600;
+			letter-spacing: 2px;
+			text-shadow: 1px 1px 8px #FF6B6B88;
+		}
+		.navbar-center {
+			display: flex;
+			gap: 24px;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.navbar-center li a {
+			color: #FFD600;
+			text-decoration: none;
+			font-size: 1.1rem;
+			padding: 8px 18px;
+			border-radius: 20px;
+			background: linear-gradient(90deg, #FF6B6B 0%, #222 100%);
+			box-shadow: 0 2px 8px #FFD60044;
+			transition: background 0.2s, transform 0.2s, color 0.2s;
+		}
+		.navbar-center li a:hover {
+			background: linear-gradient(90deg, #FFD600 0%, #FF6B6B 100%);
+			color: #222;
+			transform: scale(1.08);
+		}
+		.navbar-right {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+		.search-bar {
+			padding: 8px 16px;
+			border-radius: 20px;
+			border: none;
+			font-size: 1rem;
+			background: #FFD600;
+			color: #222;
+			width: 180px;
+			box-shadow: 0 2px 8px #FFD60044;
+		}
+		.search-bar:focus {
+			outline: 2px solid #FF6B6B;
+		}
+		.profile-icon {
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			background: #222;
+			box-shadow: 0 0 8px #FFD60099;
+		}
+		.toggle-btn {
+			display: none;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 40px;
+			height: 40px;
+			background: #FFD600;
+			border-radius: 50%;
+			cursor: pointer;
+			border: none;
+			margin-right: 8px;
+		}
+		.toggle-btn span {
+			display: block;
+			width: 24px;
+			height: 3px;
+			background: #222;
+			margin: 4px 0;
+			border-radius: 2px;
+			transition: 0.3s;
+		}
+		@media (max-width: 900px) {
+			.navbar {
+				padding: 8px 10px;
+			}
+			.navbar-center {
+				gap: 10px;
+			}
+			.search-bar {
+				width: 120px;
+			}
+		}
+		@media (max-width: 700px) {
+			.navbar {
+				flex-direction: row;
+				align-items: center;
+			}
+			.navbar-center {
+				display: none;
+			}
+			.toggle-btn {
+				display: flex;
+			}
+			.navbar-right {
+				gap: 8px;
+			}
+		}
+		@media (max-width: 700px) {
+			.mobile-menu {
+				display: flex;
+				flex-direction: column;
+				position: absolute;
+				top: 60px;
+				left: 0;
+				width: 100vw;
+				background: linear-gradient(90deg, #222 0%, #FF6B6B 60%, #FFD600 100%);
+				box-shadow: 0 4px 24px #0008;
+				z-index: 999;
+				padding: 16px 0;
+			}
+			.mobile-menu li {
+				margin: 12px 0;
+				text-align: center;
+			}
+			.mobile-menu li a {
+				font-size: 1.2rem;
+				padding: 10px 24px;
+				border-radius: 24px;
+				background: linear-gradient(90deg, #FF6B6B 0%, #222 100%);
+				color: #FFD600;
+				box-shadow: 0 2px 8px #FFD60044;
+			}
+			.mobile-menu li a:hover {
+				background: linear-gradient(90deg, #FFD600 0%, #FF6B6B 100%);
+				color: #222;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="https://ui-avatars.com/api/?name=With+Family&background=FFD600&color=222&size=40" alt="withfamily logo" class="logo">
+			<span class="app-name">withfamily</span>
+		</div>
+		<button class="toggle-btn" id="toggleMenu" aria-label="Open menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+		<ul class="navbar-center" id="navbarLinks">
+			<li><a href="#home">Home</a></li>
+			<li><a href="#movies">Movies</a></li>
+			<li><a href="#webseries">WebSeries</a></li>
+			<li><a href="#shortmovie">Short Movie</a></li>
+			<li><a href="#live">Live</a></li>
+		</ul>
+		<div class="navbar-right" id="navbarRight">
+			<input type="text" class="search-bar" id="mainSearchBar" placeholder="Search...">
+			<img src="https://ui-avatars.com/api/?name=User&background=222&color=FFD600&size=36" alt="User Profile" class="profile-icon">
+		</div>
+	</nav>
+	<div class="mobile-menu" id="mobileMenu">
+		<ul>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#movies">Movies</a></li>
+			<li><a href="#webseries">WebSeries</a></li>
+			<li><a href="#shortmovie">Short Movie</a></li>
+			<li><a href="#live">Live</a></li>
+		</ul>
+		<input type="text" class="search-bar" id="mobileSearchBar" placeholder="Search...">
+	</div>
+	<script>
+		const toggleBtn = document.getElementById('toggleMenu');
+		const mobileMenu = document.getElementById('mobileMenu');
+		const navbarLinks = document.getElementById('navbarLinks');
+		const navbarRight = document.getElementById('navbarRight');
+		const mainSearchBar = document.getElementById('mainSearchBar');
+		const mobileSearchBar = document.getElementById('mobileSearchBar');
+		let menuOpen = false;
+
+		function setMenuState(open) {
+			menuOpen = open;
+			if (menuOpen) {
+				mobileMenu.style.display = 'flex';
+				mobileMenu.style.flexDirection = 'column';
+				mobileMenu.style.animation = 'slideDown 0.3s';
+				toggleBtn.classList.add('open');
+			} else {
+				mobileMenu.style.display = 'none';
+				toggleBtn.classList.remove('open');
+			}
+		}
+
+		toggleBtn.addEventListener('click', function() {
+			setMenuState(!menuOpen);
+		});
+
+		window.addEventListener('resize', function() {
+			if(window.innerWidth > 700) {
+				setMenuState(false);
+			}
+		});
+
+		function handleResponsiveSearchBar() {
+			if(window.innerWidth <= 700) {
+				mainSearchBar.style.display = 'none';
+				mobileSearchBar.style.display = 'block';
+			} else {
+				mainSearchBar.style.display = 'block';
+				mobileSearchBar.style.display = 'none';
+			}
+		}
+		window.addEventListener('resize', handleResponsiveSearchBar);
+		document.addEventListener('DOMContentLoaded', handleResponsiveSearchBar);
+
+		// Hamburger animation
+		const spans = toggleBtn.querySelectorAll('span');
+		function animateHamburger(open) {
+			if(open) {
+				spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+				spans[1].style.opacity = '0';
+				spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+			} else {
+				spans[0].style.transform = '';
+				spans[1].style.opacity = '1';
+				spans[2].style.transform = '';
+			}
+		}
+		toggleBtn.addEventListener('click', function() {
+			animateHamburger(!menuOpen);
+		});
+		window.addEventListener('resize', function() {
+			animateHamburger(false);
+		});
+	</script>
+	<style>
+		@keyframes slideDown {
+			from { opacity: 0; transform: translateY(-20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.mobile-menu {
+			display: none;
+			position: absolute;
+			top: 60px;
+			left: 0;
+			width: 100vw;
+			background: linear-gradient(90deg, #222 0%, #FF6B6B 60%, #FFD600 100%);
+			box-shadow: 0 4px 24px #0008;
+			z-index: 999;
+			padding: 16px 0;
+			animation: slideDown 0.3s;
+		}
+		.mobile-menu ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.mobile-menu li {
+			margin: 12px 0;
+			text-align: center;
+		}
+		.mobile-menu li a {
+			font-size: 1.2rem;
+			padding: 10px 24px;
+			border-radius: 24px;
+			background: linear-gradient(90deg, #FF6B6B 0%, #222 100%);
+			color: #FFD600;
+			box-shadow: 0 2px 8px #FFD60044;
+			display: inline-block;
+			text-decoration: none;
+		}
+		.mobile-menu li a:hover {
+			background: linear-gradient(90deg, #FFD600 0%, #FF6B6B 100%);
+			color: #222;
+		}
+		.mobile-menu .search-bar {
+			margin: 16px auto 0 auto;
+			display: block;
+			width: 80vw;
+			max-width: 320px;
+			padding: 10px 18px;
+			font-size: 1.1rem;
+		}
+	</style>
+</body>
+</html>
