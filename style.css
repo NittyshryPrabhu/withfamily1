@@ -33,7 +33,7 @@ body { font-family: "Segoe UI", Roboto, system-ui, -apple-system, Arial; backgro
   padding: 8px 14px;
   border-radius: 10px;
   transition: transform .12s, background .12s;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));
+  background: linear-gradient(180deg, rgb(125, 34, 34), rgb(52, 52, 36));
 }
 .nav-center a:hover {
   transform: translateY(-3px);
@@ -144,6 +144,7 @@ body { font-family: "Segoe UI", Roboto, system-ui, -apple-system, Arial; backgro
 .movies-row { display: flex; gap: 14px; align-items: flex-start; overflow-x: auto; padding-bottom:6px; -webkit-overflow-scrolling: touch; }
 .movie-card { background: linear-gradient(180deg,#111,#181818); padding:10px; border-radius:10px; color:#fff; box-shadow: 0 6px 18px rgba(0,0,0,0.6); flex: 0 0 220px; min-width: 220px; }
 .movie-card .thumb { width:100%; height:140px; border-radius:8px; background: linear-gradient(90deg,#b71c1c,#27ae60); }
+.movie-card .thumb img.poster { width:100%; height:100%; object-fit:cover; border-radius:8px; display:block; }
 .movie-card .title { font-size:1rem; margin-top:8px; }
 .movie-card .meta { font-size:0.9rem; color: #ddd; margin-top:6px; }
 
@@ -186,4 +187,36 @@ body { font-family: "Segoe UI", Roboto, system-ui, -apple-system, Arial; backgro
 /* improve scrollbar visibility slightly */
 .movies-row.expanded::-webkit-scrollbar { height: 10px; }
 .movies-row.expanded::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 8px; }
+
+/* Footer styles */
+.site-footer { background: linear-gradient(180deg,#0b0b0b 0%, #111 60%, #000 100%); color: #ddd; padding: 36px 20px 18px; margin-top: 28px; }
+.footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; max-width: 1200px; margin: 0 auto; align-items: start; }
+.footer-brand .logo { font-weight:900; font-size:1.4rem; color:#fff; background: linear-gradient(90deg,#b71c1c 0%, #27ae60 100%); display:inline-block; padding:8px 12px; border-radius:8px; }
+.footer-brand .tag { margin-top:8px; color: #bbb; }
+.footer-links { display: flex; gap: 18px; }
+.links-col h4 { color:#fff; margin-bottom:8px; }
+.links-col ul { list-style:none; }
+.links-col li { margin-bottom:6px; }
+.links-col a { color: #ddd; text-decoration:none; }
+.links-col a:hover { color:#fff; text-decoration:underline; }
+.footer-actions { display:flex; gap:18px; align-items:flex-start; }
+.contact h4, .newsletter h4, .social h4 { color:#fff; margin-bottom:8px; }
+.newsletter form { display:flex; gap:8px; }
+.newsletter input[type="email"] { padding:8px 10px; border-radius:8px; border: none; min-width:180px; }
+.newsletter .small { color:#aaa; margin-top:8px; font-size:0.9rem; }
+.social-icons a { display:inline-block; margin-right:8px; color:#ddd; text-decoration:none; }
+.footer-note { text-align:center; margin-top:18px; color:#999; font-size:0.95rem; }
+
+/* Responsive footer adjustments */
+@media (max-width: 900px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-links { margin-top: 12px; }
+  .footer-actions { flex-direction: column; }
+  .newsletter form { flex-direction: row; }
+}
+
+@media (max-width: 480px) {
+  .newsletter input[type="email"] { min-width:120px; }
+  .links-col { min-width: 140px; }
+}
 

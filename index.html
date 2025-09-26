@@ -68,7 +68,9 @@
     </div>
   </section>
 
-  <!-- Movies section -->
+  
+
+   <!-- Movies section -->
   <section id="movies" class="movies-section">
     <div class="section-header">
       <h2>Movies</h2>
@@ -79,13 +81,145 @@
       <!-- We'll generate cards via JS; include some placeholders for accessibility/fallback -->
       <template id="movieCardTemplate">
         <article class="movie-card">
-          <div class="thumb" aria-hidden="true"></div>
+          <div class="thumb" aria-hidden="true">
+            <img class="poster" alt="Movie poster" />
+          </div>
           <h3 class="title">Movie Title</h3>
           <p class="meta">2025 • Action</p>
         </article>
       </template>
     </div>
   </section>
+
+    
+
+  <!-- WebSeries section -->
+  <section id="webseries" class="movies-section webseries-section">
+    <div class="section-header">
+      <h2>WebSeries</h2>
+      <button id="viewAllWebBtn" class="view-all" aria-expanded="false">View all</button>
+    </div>
+
+    <div class="movies-row" id="webRow" aria-live="polite">
+      <template id="webCardTemplate">
+        <article class="movie-card">
+          <div class="thumb" aria-hidden="true">
+            <img class="poster" alt="Series poster" />
+          </div>
+          <h3 class="title">Series Title</h3>
+          <p class="meta">2025 • Drama</p>
+        </article>
+      </template>
+    </div>
+  </section>
+
+  <!-- ShortFilm section -->
+  <section id="shortfilm" class="movies-section shortfilm-section">
+    <div class="section-header">
+      <h2>ShortFilm</h2>
+      <button id="viewAllShortBtn" class="view-all" aria-expanded="false">View all</button>
+    </div>
+
+    <div class="movies-row" id="shortRow" aria-live="polite">
+      <template id="shortCardTemplate">
+        <article class="movie-card">
+          <div class="thumb" aria-hidden="true">
+            <img class="poster" alt="Short film poster" />
+          </div>
+          <h3 class="title">Short Title</h3>
+          <p class="meta">2025 • Short</p>
+        </article>
+      </template>
+    </div>
+  </section>
+
+  <!-- Live section -->
+  <section id="live" class="movies-section live-section">
+    <div class="section-header">
+      <h2>Live</h2>
+      <button id="viewAllLiveBtn" class="view-all" aria-expanded="false">View all</button>
+    </div>
+
+    <div class="movies-row" id="liveRow" aria-live="polite">
+      <template id="liveCardTemplate">
+        <article class="movie-card">
+          <div class="thumb" aria-hidden="true">
+            <img class="poster" alt="Live channel poster" />
+          </div>
+          <h3 class="title">Live Channel</h3>
+          <p class="meta">Live • Now</p>
+        </article>
+      </template>
+    </div>
+  </section>
+
+ <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo">withfamily</div>
+          <p class="tag">Watch together. Share the moment.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="links-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#movies">Movies</a></li>
+              <li><a href="#webseries">WebSeries</a></li>
+              <li><a href="#shortfilm">ShortFilm</a></li>
+              <li><a href="#live">Live</a></li>
+            </ul>
+          </div>
+          <div class="links-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+          <div class="links-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <div class="contact">
+            <h4>Contact</h4>
+            <p>support@withfamily.example</p>
+            <p>+1 (555) 123-4567</p>
+          </div>
+
+          <div class="newsletter">
+            <h4>Newsletter</h4>
+            <form id="newsletterForm">
+              <input type="email" id="newsletterEmail" placeholder="Your email" required />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <p class="small">Get updates on new releases and live events.</p>
+          </div>
+
+          <div class="social">
+            <h4>Follow</h4>
+            <div class="social-icons">
+              <a href="#" aria-label="Twitter">Twitter</a>
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="Instagram">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <p>© <span id="footerYear"></span> withfamily — All rights reserved.</p>
+      </div>
+    </footer>
 
   <script src="script.js"></script>
 </body>
