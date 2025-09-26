@@ -117,6 +117,23 @@ body { font-family: "Segoe UI", Roboto, system-ui, -apple-system, Arial; backgro
   .btn { width: 100%; }
 }
 
+/* Make hero smaller on desktop and adjust hero typography */
+@media (min-width: 1400px) {
+  .hero { height: 56vh; min-height: 320px; max-height: 560px; }
+  .hero-content h1 { font-size: 2.2rem; }
+  .hero-content p { font-size: 1rem; }
+}
+
+@media (min-width: 1100px) and (max-width: 1399px) {
+  .hero { height: 60vh; min-height: 320px; max-height: 520px; }
+  .hero-content h1 { font-size: 2.1rem; }
+}
+
+@media (min-width: 720px) and (max-width: 1099px) {
+  .hero { height: 50vh; min-height: 320px; }
+  .hero-content h1 { font-size: 1.9rem; }
+}
+
 /* Movies section */
 .movies-section { padding: 28px 20px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
 .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
